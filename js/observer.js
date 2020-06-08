@@ -12,16 +12,16 @@ Observer.prototype = {
     },
     defineReactive: function(data, key, val) {
         var dep = new Dep();
-		console.log(dep)
         var childObj = observe(val);
         Object.defineProperty(data, key, {
             enumerable: true,
             configurable: true,
             get: function getter () {
                 if (Dep.target) {
-					console.log(Math.random())
+                    console.log('add')
                     dep.addSub(Dep.target);
                 }
+                console.log(dep)
                 return val;
             },
             set: function setter (newVal) {

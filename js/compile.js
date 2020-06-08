@@ -32,7 +32,7 @@ Compile.prototype = {
             var reg = /\{\{(.*)\}\}/;
             var text = node.textContent;
 
-            if (self.isElementNode(node)) {  
+            if (self.isElementNode(node)) {
                 self.compile(node);
             } else if (self.isTextNode(node) && reg.test(text)) {
                 self.compileText(node, reg.exec(text)[1]);
@@ -61,7 +61,6 @@ Compile.prototype = {
         });
     },
     compileText: function(node, exp) {
-		console.log(this)
         var self = this;
         var initText = this.vm[exp];
         this.updateText(node, initText);

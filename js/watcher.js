@@ -7,13 +7,13 @@ function Watcher(vm, exp, cb) {
 
 Watcher.prototype = {
     update: function() {
-        this.run();
+        this.run()
     },
     run: function() {
         var value = this.vm.data[this.exp];
-        var oldVal = this.value;
+        var oldVal = this.value
         if (value !== oldVal) {
-            this.value = value;
+            this.value = value
             this.cb.call(this.vm, value, oldVal);
         }
     },

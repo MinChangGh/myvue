@@ -1,23 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>self-vue</title>
+  <meta charset="UTF-8">
+  <title>self-vue</title>
 </head>
 <style>
-    #app {
-        text-align: center;
-    }
+  #app {
+    text-align: center;
+  }
 </style>
 <body>
-    <div id="app">
-        <h2>{{title}}</h2>
-        <input v-model="name">
-        <h1>{{name}}</h1>
-		<h1>{{name}}</h1>
-		<h1>{{test}}</h1>
-        <button v-on:click="clickMe">click me!</button>
-    </div>
+<div id="app">
+  <h2>{{title}}</h2>
+  <input v-model="name">
+  <h1>{{name}}</h1>
+  <h1>{{name}}</h1>
+  <h1>{{test}}</h1>
+  <button v-on:click="clickMe">click me!</button>
+  <div id="btn"></div>
+</div>
 </body>
 <script src="js/observer.js"></script>
 <script src="js/watcher.js"></script>
@@ -25,25 +26,39 @@
 <script src="js/index.js"></script>
 <script type="text/javascript">
 
-     new SelfVue({
-        el: '#app',
-        data: {
-            title: 'hello world',
-            name: 'canfoo',
-			test:"哈哈"
-        },
-        methods: {
-            clickMe: function () {
-                this.title = 'hello world';
-            }
-        },
-        mounted: function () {
-            window.setTimeout(() => {
-                this.title = '你好';
-            }, 1000);
-			console.log(this)
-        }
-    });
+  new SelfVue({
+    el: '#app',
+    data: {
+      title: 'hello world',
+      name: 'canfoo',
+      test: "哈哈"
+    },
+    methods: {
+      clickMe: function () {
+        this.title = 'hello world';
+      }
+    },
+    mounted: function () {
+      window.setTimeout(() => {
+         this.title = '你好';
+      }, 1000);
+    }
+  });
 
 </script>
+
+<script type="text/javascript">
+  function createScript(url) {
+    var script = document.createElement('script')
+    script.setAttribute('src', url)
+    script.setAttribute('type', 'text/javascript')
+    document.getElementsByTagName('head')[0].appendChild(script)
+
+  }
+  createScript('http://192.168.0.173:90/jsonp?fn=cb')
+function cb(data) {
+  alert(data)
+}
+</script>
+
 </html>
